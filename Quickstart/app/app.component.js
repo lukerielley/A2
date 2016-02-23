@@ -1,4 +1,4 @@
-System.register(['angular2/core', './Greeter'], function(exports_1, context_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,29 +10,21 @@ System.register(['angular2/core', './Greeter'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, Greeter_1;
-    var user, AppComponent;
+    var core_1;
+    var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (Greeter_1_1) {
-                Greeter_1 = Greeter_1_1;
             }],
         execute: function() {
-            user = {
-                firstname: "Chris",
-                lastname: "Fulstow",
-                age: 38
-            };
             AppComponent = (function () {
                 function AppComponent() {
                 }
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: '<h1>My Third Angular 2 App</h1><h2>' + Greeter_1.greeter(user) + '</h2>'
+                        template: '<h1>My Third Angular 2 App</h1>'
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
