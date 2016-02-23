@@ -12,7 +12,9 @@ import {HeroService} from '../services/hero.service';
     selector: 'my-heroes',
     
     // The components we want to make use of
-    directives: [HeroDetailComponent],
+    directives: [
+        HeroDetailComponent
+    ],
     
     // our DI declarations
     // providers: [HeroService], THIS IS REMOVED FROM HERE, AS IT IS NOW DECLARED HIGHER IN APP.COMPONENT

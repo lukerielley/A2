@@ -46,7 +46,9 @@ System.register(['angular2/core', './hero-detail.component', '../services/hero.s
                     core_1.Component({
                         selector: 'my-heroes',
                         // The components we want to make use of
-                        directives: [hero_detail_component_1.HeroDetailComponent],
+                        directives: [
+                            hero_detail_component_1.HeroDetailComponent
+                        ],
                         // our DI declarations
                         // providers: [HeroService], THIS IS REMOVED FROM HERE, AS IT IS NOW DECLARED HIGHER IN APP.COMPONENT
                         template: "\n        <h1>{{title}}</h1>\n            <h2>My Heroes</h2>\n            <ul class=\"heroes\">\n                <li *ngFor=\"#hero of heroes\"\n                    (click)=\"onSelect(hero)\" \n                    [class.selected]=\"hero === selectedHero\" >\n                    <span class=\"badge\">{{hero.id}}</span> {{hero.name}}\n                </li>\n            </ul>\n            \n        <my-hero-detail [hero]=\"selectedHero\"></my-hero-detail>\n\n        ",
