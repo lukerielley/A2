@@ -15,12 +15,19 @@ interface Hero {
                     <span class="badge">{{hero.id}}</span> {{hero.name}}
                 </li>
             </ul>
-        <h2>{{hero.name}} details!</h2>
-        <div><label>id: </label>{{hero.id}}</div>
-        <div>
-        <label>name: </label>
-        <div>
-        <input [(ngModel)]="hero.name" placeholder="name">
+            
+        <!-- this will only add the inner section to the DOM if selectedHero is defined -->
+        <div *ngIf="selectedHero">
+            <h2>{{selectedHero.name}} details!</h2>
+            <div>
+                <label>id: </label>{{selectedHero.id}}
+            </div>
+            <div>
+                <label>name: </label>
+            <div>
+            <input [(ngModel)]="selectedHero.name" placeholder="name">
+        </div>
+        
         </div>
         </div>
         `,
@@ -89,7 +96,7 @@ export class AppComponent {
     selectedHero: Hero;
     
     onSelect(hero: Hero) { 
-        alert('You have selected the hero "' + hero.name + '"');
+        //alert('You have selected the hero "' + hero.name + '"');
         this.selectedHero = hero; 
     }
 
