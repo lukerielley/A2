@@ -1,12 +1,10 @@
 import {Component} from 'angular2/core';
-
-interface Hero {
-    id: number;
-    name: string;
-}
+import {IHero} from './ihero';
+import {HeroDetailComponent} from './hero-detail.component';
 
 @Component({
     selector: 'my-app',
+    directives: [HeroDetailComponent],
     template: `
         <h1>{{title}}</h1>
             <h2>My Heroes</h2>
@@ -18,20 +16,8 @@ interface Hero {
                 </li>
             </ul>
             
-        <!-- this will only add the inner section to the DOM if selectedHero is defined -->
-        <div *ngIf="selectedHero">
-            <h2>{{selectedHero.name}} details!</h2>
-            <div>
-                <label>id: </label>{{selectedHero.id}}
-            </div>
-            <div>
-                <label>name: </label>
-            <div>
-            <input [(ngModel)]="selectedHero.name" placeholder="name">
-        </div>
-        
-        </div>
-        </div>
+        <my-hero-detail [hero]="selectedHero"></my-hero-detail>
+
         `,
     styles: [`
   .selected {
@@ -80,8 +66,7 @@ interface Hero {
     margin-right: .8em;
     border-radius: 4px 0px 0px 4px;
   }
-`],
-
+`]
 })
 
 export class AppComponent {
@@ -90,16 +75,17 @@ export class AppComponent {
     
     public heroes = HEROES;
     
-    selectedHero: Hero;
+    selectedHero: IHero;
     
-    onSelect(hero: Hero) { 
+    onSelect(hero: IHero) { 
         //alert('You have selected the hero "' + hero.name + '"');
         this.selectedHero = hero; 
     }
     
 }
 
-var HEROES: Hero[] = [
+var HEROES: IHero[] = [
+    
     { "id": 11, "name": "Mr. Nice" },
     { "id": 12, "name": "Narco" },
     { "id": 13, "name": "Bombasto" },
@@ -110,4 +96,5 @@ var HEROES: Hero[] = [
     { "id": 18, "name": "Dr IQ" },
     { "id": 19, "name": "Magma" },
     { "id": 20, "name": "Tornado" }
+    
 ];
