@@ -1,0 +1,23 @@
+// This file tells TypeScript how we want our code compiled
+{
+    "compilerOptions": {
+        // we want to compile to ECMA Script Version 5
+        "target": "es5",
+        "module": "system",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        
+        // We can have code comments removed
+        "removeComments": false,
+        "noImplicitAny": false
+    },
+    
+    // the compiler will ignore anything in these folders/files
+    "exclude": [
+        "node_modules",
+        "typings/main",
+        "typings/main.d.ts"
+    ]
+}
