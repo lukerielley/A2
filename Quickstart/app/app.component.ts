@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import {HeroService} from './services/hero.service';
-import {HeroesComponent} from './heroes.component';
+import {HeroesComponent} from './components/heroes.component';
 
 
 @Component({

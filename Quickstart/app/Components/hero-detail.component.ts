@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {IHero} from './interfaces/ihero';
+import {IHero} from '../interfaces/ihero';
 
 @Component({
     selector: 'my-hero-detail',

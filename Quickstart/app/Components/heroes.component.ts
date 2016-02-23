@@ -3,9 +3,9 @@ import {Component} from 'angular2/core';
 import {OnInit} from 'angular2/core';
 
 
-import {IHero} from './interfaces/ihero';
+import {IHero} from '../interfaces/ihero';
 import {HeroDetailComponent} from './hero-detail.component';
-import {HeroService} from './services/hero.service';
+import {HeroService} from '../services/hero.service';
 
 @Component({
 
