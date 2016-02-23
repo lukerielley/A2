@@ -11,7 +11,7 @@ interface Hero {
         <h1>{{title}}</h1>
             <h2>My Heroes</h2>
             <ul class="heroes">
-                <li *ngFor="#hero of heroes">
+                <li *ngFor="#hero of heroes"(click)="onSelect(hero)" >
                     <span class="badge">{{hero.id}}</span> {{hero.name}}
                 </li>
             </ul>
@@ -76,12 +76,23 @@ interface Hero {
 })
 
 export class AppComponent {
+    
     public title = 'Tour of Heroes';
+    
     public hero: Hero = {
         id: 1,
         name: 'Windstorm'
     };
+    
     public heroes = HEROES;
+    
+    selectedHero: Hero;
+    
+    onSelect(hero: Hero) { 
+        alert('You have selected the hero "' + hero.name + '"');
+        this.selectedHero = hero; 
+    }
+
 }
 
 var HEROES: Hero[] = [
