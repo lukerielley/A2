@@ -1,10 +1,22 @@
+// Angular 2 Usings
 import {Component} from 'angular2/core';
-import {IHero} from './ihero';
+import {OnInit} from 'angular2/core';
+
+
+import {IHero} from './interfaces/ihero';
 import {HeroDetailComponent} from './hero-detail.component';
+import {HeroService} from './services/hero.service';
 
 @Component({
+
     selector: 'my-app',
+    
+    // The components we want to make use of
     directives: [HeroDetailComponent],
+    
+    // our DI declarations
+    providers: [HeroService],
+
     template: `
         <h1>{{title}}</h1>
             <h2>My Heroes</h2>
@@ -69,32 +81,33 @@ import {HeroDetailComponent} from './hero-detail.component';
 `]
 })
 
-export class AppComponent {
-    
+export class AppComponent implements OnInit {
+
+    constructor(
+        private _heroService: HeroService) {
+
+    }
+
+    ngOnInit() {
+        this.getHeroes();
+    }
+
     public title = 'Tour of Heroes';
-    
+
     public heroes = HEROES;
-    
+
     selectedHero: IHero;
-    
+
     onSelect(hero: IHero) { 
         //alert('You have selected the hero "' + hero.name + '"');
-        this.selectedHero = hero; 
+        this.selectedHero = hero;
+    };
+
+    getHeroes() {
+        this.heroes = this._heroService.getHeroes();
     }
-    
+
 }
 
-var HEROES: IHero[] = [
-    
-    { "id": 11, "name": "Mr. Nice" },
-    { "id": 12, "name": "Narco" },
-    { "id": 13, "name": "Bombasto" },
-    { "id": 14, "name": "Celeritas" },
-    { "id": 15, "name": "Magneta" },
-    { "id": 16, "name": "RubberMan" },
-    { "id": 17, "name": "Dynama" },
-    { "id": 18, "name": "Dr IQ" },
-    { "id": 19, "name": "Magma" },
-    { "id": 20, "name": "Tornado" }
-    
-];
+// contains our list of heros
+var HEROES: IHero[] = [];
