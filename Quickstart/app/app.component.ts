@@ -88,11 +88,6 @@ export class AppComponent {
     
     public title = 'Tour of Heroes';
     
-    public hero: Hero = {
-        id: 1,
-        name: 'Windstorm'
-    };
-    
     public heroes = HEROES;
     
     selectedHero: Hero;
@@ -101,8 +96,7 @@ export class AppComponent {
         //alert('You have selected the hero "' + hero.name + '"');
         this.selectedHero = hero; 
     }
-
-
+    
 }
 
 var HEROES: Hero[] = [
