@@ -1,7 +1,8 @@
 import {Component} from 'angular2/core';
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+
 import {HeroService} from './services/hero.service';
 import {HeroesComponent} from './components/heroes.component';
-
 
 @Component({
     
@@ -9,18 +10,28 @@ import {HeroesComponent} from './components/heroes.component';
 
     template: `
     <h1>{{title}}</h1>
-    <my-heroes></my-heroes>
+    <a [routerLink]="['Heroes']">Heroes</a>
+    <router-outlet></router-outlet>
     `,
 
     directives: [
-        HeroesComponent
+        ROUTER_DIRECTIVES
     ],
 
     providers: [
+        ROUTER_DIRECTIVES,
         HeroService
     ]
   
 })
+
+@RouteConfig([
+  {
+    path: '/heroes',
+    name: 'Heroes',
+    component: HeroesComponent
+  }
+])
 
 export class AppComponent {
     title = 'Tour of Heroes';
