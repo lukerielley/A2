@@ -17,18 +17,8 @@ import {HeroService} from '../services/hero.service';
     // our DI declarations
     // providers: [HeroService], THIS IS REMOVED FROM HERE, AS IT IS NOW DECLARED HIGHER IN APP.COMPONENT
 
-    template: `
-        <h2>My Heroes</h2>
-        <ul class="heroes">
-            <li *ngFor="#hero of heroes"
-                (click)="onSelect(hero)" 
-                [class.selected]="hero === selectedHero" >
-                <span class="badge">{{hero.id}}</span> {{hero.name}}
-            </li>
-        </ul>
-        
-    <my-hero-detail [hero]="selectedHero"></my-hero-detail>
-        `,
+    templateUrl: './app/templates/heroes.component.html',
+    
     styles: [`
   .selected {
     background-color: #CFD8DC !important;
