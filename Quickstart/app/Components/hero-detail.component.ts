@@ -4,12 +4,17 @@ import {RouteParams} from 'angular2/router';
 import {IHero} from '../interfaces/ihero';
 import {HeroService} from '../services/hero.service';
 
+import {HeroRatePipe} from '../pipes/hero-rate.pipe';
+
 @Component({
     selector: 'my-hero-detail',
     templateUrl: './app/templates/hero-detail.component.html',
     inputs: ['hero'],
     styleUrls: [
         'app/styles/hero-detail.component.css'
+    ],
+    pipes: [
+        HeroRatePipe
     ]
 })
 
