@@ -4,6 +4,7 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {HeroService} from './services/hero.service';
 import {HeroesComponent} from './components/heroes.component';
 import {DashboardComponent} from './components/dashboard.component';
+import {HeroDetailComponent} from './components/hero-detail.component';
 
 @Component({
     
@@ -41,7 +42,11 @@ import {DashboardComponent} from './components/dashboard.component';
         name: 'Heroes',
         component: HeroesComponent
     },
-    
+    {
+        path: '/detail/:id',
+        name: 'HeroDetail',
+        component: HeroDetailComponent
+    },
 ])
 
 export class AppComponent {
