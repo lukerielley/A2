@@ -8,7 +8,10 @@ import {Router} from 'angular2/router';
 @Component({
     selector: 'my-dashboard',
     //template: '<h3>My Dashboard</h3>'
-    templateUrl: './app/templates/dashboard.component.html'
+    templateUrl: './app/templates/dashboard.component.html',
+    styleUrls: [
+        'app/styles/dashboard.component.css'
+    ]
 })
 
 export class DashboardComponent {
