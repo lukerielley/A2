@@ -1,5 +1,6 @@
 // Angular 2 Usings
 import {Component} from 'angular2/core';
+import {Router} from 'angular2/router';
 import {OnInit} from 'angular2/core';
 import {IHero} from '../interfaces/ihero';
 import {HeroDetailComponent} from './hero-detail.component';
@@ -28,8 +29,8 @@ import {HeroService} from '../services/hero.service';
 export class HeroesComponent implements OnInit {
 
     constructor(
+        private _router: Router,
         private _heroService: HeroService) {
-
     }
 
     ngOnInit() {
@@ -50,6 +51,10 @@ export class HeroesComponent implements OnInit {
     getHeroes() {
         this._heroService.getHeroes().then(heroes => this.heroes = heroes);
     }
+    
+    gotoDetail() {
+        this._router.navigate(['HeroDetail', { id: this.selectedHero.id }]);
+    }   
 
 }
 
