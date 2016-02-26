@@ -27,18 +27,28 @@ export class HeroService {
     public getHeroes() : Promise {
         
         let header = new Headers();
-
-        this._http.get('https://dl.dropboxusercontent.com/u/13111653/heroes.json')
+       
+        var deferredResult = new Promise((resolve, reject) => {
+            
+            this._http.get('https://dl.dropboxusercontent.com/u/13111653/heroes.json')
             .retry(2)
 			.map(res => res.text())
 		    .subscribe(
-		      data => console.log(data),
-		      err => console.error('There was an error: ' + err),
-		      () => console.log('Random Quote Complete')
+		      data => {
+                  resolve(JSON.parse(data));
+              },
+		      err => {
+                  reject();
+                  console.error('There was an error: ' + err);
+              },
+		      () => {
+                  console.log('Random Quote Complete');
+              }
 			);
-        
-        // get our heros
-        return Promise.resolve(HEROES);
+            
+        })
+            
+        return deferredResult;
 
     }
     
