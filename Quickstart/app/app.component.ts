@@ -2,6 +2,8 @@ import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
 import {HeroService} from './services/hero.service';
+import {DownloadService} from './services/download.service';
+
 import {HeroesComponent} from './components/heroes.component';
 import {DashboardComponent} from './components/dashboard.component';
 import {HeroDetailComponent} from './components/hero-detail.component';
@@ -29,7 +31,8 @@ import {HeroDetailComponent} from './components/hero-detail.component';
 
     providers: [
         ROUTER_DIRECTIVES,
-        HeroService
+        HeroService,
+        DownloadService
     ]
   
 })

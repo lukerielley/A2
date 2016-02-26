@@ -1,6 +1,6 @@
-
 import {Injectable} from 'angular2/core';
 import {Http, HTTP_PROVIDERS} from 'angular2/http';
+import {DownloadService} from '../services/download.service';
 
 import {IHero} from '../interfaces/ihero';
 import {HEROES} from '../mocks/mock-heroes';
@@ -17,38 +17,19 @@ import 'rxjs/Rx';
 export class HeroService {
     
     private _http : Http;
+    private _downloadService : DownloadService;
     
     constructor(
-        http: Http) 
+        http: Http,
+        downloadService : DownloadService) 
     {
         this._http = http;   
+        this._downloadService = downloadService;
     }
 
     public getHeroes() : Promise {
         
-        let header = new Headers();
-       
-        var deferredResult = new Promise((resolve, reject) => {
-            
-            this._http.get('https://dl.dropboxusercontent.com/u/13111653/heroes.json')
-            .retry(2)
-			.map(res => res.text())
-		    .subscribe(
-		      data => {
-                  resolve(JSON.parse(data));
-              },
-		      err => {
-                  reject();
-                  console.error('There was an error: ' + err);
-              },
-		      () => {
-                  console.log('Random Quote Complete');
-              }
-			);
-            
-        })
-            
-        return deferredResult;
+        return this._downloadService.Get("heroes.json");
 
     }
     
