@@ -28,9 +28,7 @@ export class HeroService {
     }
 
     public getHeroes() : Promise {
-        
         return this._downloadService.Get("heroes.json");
-
     }
     
     // See the "Take it slow" appendix
@@ -41,9 +39,11 @@ export class HeroService {
     }
 
     getHero(id: number) : IHero {
+
         return Promise.resolve(HEROES).then(
             heroes => heroes.filter(hero => hero.id === id)[0]
         );
+
     }
 
 
