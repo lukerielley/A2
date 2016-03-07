@@ -25,8 +25,18 @@ export class DashboardComponent {
     }
 
     ngOnInit() {
+        
+        //this._heroService.getHeroesAndVillans();
+        
         this._heroService.getHeroes()
-            .then(heroes => this.heroes = heroes.slice(1, 5));
+            .then(heroes => {
+                
+                // check the data
+                if (heroes && heroes.length > 5) {
+                    this.heroes = heroes.slice(1, 5)
+                }
+                
+            });
     }
 
     gotoDetail(hero: IHero) {

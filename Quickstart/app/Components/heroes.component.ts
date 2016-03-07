@@ -49,12 +49,12 @@ export class HeroesComponent implements OnInit {
     };
 
     getHeroes() {
-        
+
         this._heroService.getHeroes()
         .then(function(data){
             this.heroes = data;
         });
-        
+
     }
     
     gotoDetail() {

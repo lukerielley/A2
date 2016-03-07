@@ -1,4 +1,8 @@
 Template/node_modules/
 Quickstart/node_modules/
+*.ppm
+*.mp4
 *.js.map
 *.js
+Animate.bat
+Video.bat

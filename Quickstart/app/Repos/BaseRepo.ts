@@ -1,11 +1,10 @@
 import {Injectable} from 'angular2/core';
 import {Http, HTTP_PROVIDERS} from 'angular2/http';
-import 'rxjs/Rx';
 
-@Injectable()
+import {IBaseRepo} from '../interfaces/iBaseRepo';
 
-export class DownloadService {
-
+export class BaseRepo<T> implements IBaseRepo<T> {
+    
     private _httpDownloader: Http;
     private _baseUrl: string;
     private _maxRetries: number;
@@ -20,7 +19,7 @@ export class DownloadService {
     }
 
     
-    public Get(url: string) : T {
+    public Get(url: string) : Promise<T> {
         var deferredResult = new Promise((resolve, reject) => {
             this._httpDownloader.get(this._baseUrl + url)
                 .retry(this._maxRetries)
@@ -43,7 +42,7 @@ export class DownloadService {
         return deferredResult;
     }
 
-    public Post(url: string, bodyObject) : T {
+    public Post(url: string, bodyObject) : Promise<T> {
         
         // convert our body object to string, as the downloaded expects it
         var bodyAsString : string = JSON.stringify(bodyObject);
@@ -67,9 +66,17 @@ export class DownloadService {
         })
         return deferredResult;
     }
-
-    public baseURL() {
-        return this._baseUrl;
+    
+    public Put(url: string, bodyObject) : Promise<T> {
+        
+        return Promise.resolve(null);
+        
     }
-
+    
+    public Delete(url: string) : Promise<T> {
+        
+        return Promise.resolve(null);
+        
+    }
+    
 }
