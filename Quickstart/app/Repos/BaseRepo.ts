@@ -3,11 +3,15 @@ import {Http, HTTP_PROVIDERS} from 'angular2/http';
 
 import {IBaseRepo} from '../interfaces/iBaseRepo';
 
+@Injectable()
+
 export class BaseRepo<T> implements IBaseRepo<T> {
     
     private _httpDownloader: Http;
     private _baseUrl: string;
     private _maxRetries: number;
+    
+    private _activeRequests: number;
 
     constructor(
         http: Http) {
@@ -16,11 +20,15 @@ export class BaseRepo<T> implements IBaseRepo<T> {
         // Could come out of a config URL or be injected?
         this._baseUrl = "https://dl.dropboxusercontent.com/u/13111653/";
         this._maxRetries = 1;
+        
+        this._activeRequests = 0;
+        
     }
 
     
     public Get(url: string) : Promise<T> {
         var deferredResult = new Promise((resolve, reject) => {
+            this._activeRequests++;
             this._httpDownloader.get(this._baseUrl + url)
                 .retry(this._maxRetries)
                 .map(res => res.json()) // specify that we expect the body type to be parseable as JSON or throw an exception
@@ -34,7 +42,9 @@ export class BaseRepo<T> implements IBaseRepo<T> {
                     console.error('There was an error: ' + err);
                 },
                 () => {
+                    this._activeRequests--;
                     console.log('GET Complete');
+                    console.log('Active Requests = ' + this._activeRequests);
                 }
                 );
         })
@@ -48,6 +58,7 @@ export class BaseRepo<T> implements IBaseRepo<T> {
         var bodyAsString : string = JSON.stringify(bodyObject);
         
         var deferredResult = new Promise((resolve, reject) => {
+            this._activeRequests++;
             this._httpDownloader.post(this._baseUrl + url, bodyAsString)
                 .retry(this._maxRetries)
                 .map(res => res.json()) // specify that we expect the body type to be parseable as JSON or throw an exception
@@ -60,7 +71,9 @@ export class BaseRepo<T> implements IBaseRepo<T> {
                     console.error('There was an error: ' + err);
                 },
                 () => {
+                    this._activeRequests--;
                     console.log('POST Complete');
+                    console.log('Active Requests = ' + this._activeRequests);
                 }
                 );
         })
@@ -73,6 +86,7 @@ export class BaseRepo<T> implements IBaseRepo<T> {
         var bodyAsString : string = JSON.stringify(bodyObject);
         
         var deferredResult = new Promise((resolve, reject) => {
+            this._activeRequests++;
             this._httpDownloader.put(this._baseUrl + url, bodyAsString)
                 .retry(this._maxRetries)
                 .map(res => res.json()) // specify that we expect the body type to be parseable as JSON or throw an exception
@@ -85,7 +99,9 @@ export class BaseRepo<T> implements IBaseRepo<T> {
                     console.error('There was an error: ' + err);
                 },
                 () => {
+                    this._activeRequests--;
                     console.log('PUT Complete');
+                    console.log('Active Requests = ' + this._activeRequests);
                 }
                 );
         })
@@ -96,6 +112,7 @@ export class BaseRepo<T> implements IBaseRepo<T> {
     public Delete(url: string) : Promise<T> {
         
         var deferredResult = new Promise((resolve, reject) => {
+            this._activeRequests++;
             this._httpDownloader.delete(this._baseUrl + url)
                 .retry(this._maxRetries)
                 .map(res => res.json()) // specify that we expect the body type to be parseable as JSON or throw an exception
@@ -109,7 +126,9 @@ export class BaseRepo<T> implements IBaseRepo<T> {
                     console.error('There was an error: ' + err);
                 },
                 () => {
+                    this._activeRequests--;
                     console.log('DELETE Complete');
+                    console.log('Active Requests = ' + this._activeRequests);
                 }
                 );
         })

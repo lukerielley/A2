@@ -2,16 +2,27 @@ import {Injectable} from 'angular2/core';
 import {Http, HTTP_PROVIDERS} from 'angular2/http';
 import 'rxjs/Rx';
 
-@Injectable()
+import {BaseRepo} from '../Repos/BaseRepo';
+
+@Injectable({
+
+    providers: [
+        BaseRepo,
+    ]
+
+})
 
 export class DownloadService {
 
     private _httpDownloader: Http;
     private _baseUrl: string;
     private _maxRetries: number;
+    private _baseRepo: BaseRepo<IHero>;
 
     constructor(
         http: Http) {
+            
+        //this._baseRepo = baseRepo;
         this._httpDownloader = http;
         
         // Could come out of a config URL or be injected?
@@ -21,6 +32,9 @@ export class DownloadService {
 
     
     public Get(url: string) : T {
+        
+        alert('Getting');
+        
         var deferredResult = new Promise((resolve, reject) => {
             this._httpDownloader.get(this._baseUrl + url)
                 .retry(this._maxRetries)
