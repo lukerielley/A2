@@ -69,13 +69,52 @@ export class BaseRepo<T> implements IBaseRepo<T> {
     
     public Put(url: string, bodyObject) : Promise<T> {
         
-        return Promise.resolve(null);
+        // convert our body object to string, as the downloaded expects it
+        var bodyAsString : string = JSON.stringify(bodyObject);
+        
+        var deferredResult = new Promise((resolve, reject) => {
+            this._httpDownloader.put(this._baseUrl + url, bodyAsString)
+                .retry(this._maxRetries)
+                .map(res => res.json()) // specify that we expect the body type to be parseable as JSON or throw an exception
+                .subscribe(
+                data => {
+                    resolve(data);
+                },
+                err => {
+                    reject();
+                    console.error('There was an error: ' + err);
+                },
+                () => {
+                    console.log('Random Quote Complete');
+                }
+                );
+        })
+        return deferredResult;
         
     }
     
     public Delete(url: string) : Promise<T> {
         
-        return Promise.resolve(null);
+        var deferredResult = new Promise((resolve, reject) => {
+            this._httpDownloader.delete(this._baseUrl + url)
+                .retry(this._maxRetries)
+                .map(res => res.json()) // specify that we expect the body type to be parseable as JSON or throw an exception
+                .subscribe(
+                data => {
+                    //alert('Get is done: ' + data);
+                    resolve(data);
+                },
+                err => {
+                    reject();
+                    console.error('There was an error: ' + err);
+                },
+                () => {
+                    console.log('Random Quote Complete');
+                }
+                );
+        })
+        
+        return deferredResult;
         
     }
     
