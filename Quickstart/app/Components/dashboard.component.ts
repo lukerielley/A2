@@ -2,6 +2,7 @@ import { Component, OnInit } from 'angular2/core';
 
 import { IHero } from '../interfaces/ihero';
 import { HeroService } from '../services/hero.service';
+import {IUser,User} from '../interfaces/User';
 
 import {Router} from 'angular2/router';
 
@@ -17,14 +18,50 @@ import {Router} from 'angular2/router';
 export class DashboardComponent {
 
     heroes: IHero[] = [];
+    simpleBinding: string;
+    differentBinding: string;
+    invalid: boolean;
+    currentUser: User;
+    
+    specialNumber: number;
 
     constructor(
         private _router: Router,
         private _heroService: HeroService) {
+            
+            this.simpleBinding = "Hello World";
+            this.invalid = true;
+            this.differentBinding = "There are different ways to bind this text";
+            
+            this.currentUser = new User();
+            this.currentUser.firstname = "Luke";
+            this.currentUser.lastname = "Rielley";
+            
+            var lukesNumber = 134226;
+            var chrisNumber = 134163;
+            
+            this.specialNumber = lukesNumber;
+            
+        }
 
+
+    routerOnActivate(nextInstruction, prevInstruction) { 
+        console.log("DashboardComponent - routerOnActivate"); 
+    }
+    
+    routerOnDeactivate(nextInstruction, prevInstruction) { 
+        console.log("DashboardComponent - routerOnDeactivate"); 
+    }
+    
+    routerCanDeactivate(nextInstruction, prevInstruction) {
+        console.log("DashboardComponent - routerCanDeactivate"); 
+        var result = confirm("Are you sure you want to leave this page?");
+        return result;
     }
 
     ngOnInit() {
+        
+        console.log("DashboardComponent - ngOnInit");
         
         //this._heroService.getHeroesAndVillans();
         
@@ -37,6 +74,27 @@ export class DashboardComponent {
                 }
                 
             });
+    }
+    
+    ngAfterViewInit() {
+        console.log("DashboardComponent - ngAfterViewInit");
+    }
+    
+    ngOnDestroy() {
+        console.log("DashboardComponent - ngOnDestroy");
+    }
+    
+    
+    
+    showValues() {
+        
+        var msg = "";
+        
+        msg += "simpleBinding = " + this.simpleBinding;
+        msg += "\n";
+        
+        alert(msg);
+        
     }
 
     gotoDetail(hero: IHero) {

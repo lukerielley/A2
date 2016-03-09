@@ -1,4 +1,5 @@
 <h3>Top Heroes</h3>
+
 <div class="grid grid-pad">
     <div *ngFor="#hero of heroes" (click)="gotoDetail(hero)" class="col-1-4">
         <div class="module hero">
@@ -6,3 +7,46 @@
         </div>
     </div>
 </div>
+
+
+<hr />
+
+<div>Simple one-way binding</div>
+<input [value]="simpleBinding" [class.isInvalid]="invalid">
+
+<hr />
+
+<div>Method A: {{differentBinding}}</div>
+
+<hr />
+
+<div>This section will only be shown if the statment is true</div>
+<section *ngIf="currentUser">
+    <div style="border: 1px solid blue;">
+        <div>These bindings will only be fully evaluated if currentUser is defined</div>
+        <p>{{currentUser?.firstname}}</p>
+        <p>{{currentUser?.lastname}}</p>
+    </div>
+</section>
+
+<hr />
+
+<h2>ngSWITCH</h2>
+<div [ngSwitch]="specialNumber">
+  <template [ngSwitchWhen]="134226">
+      <div>This guy is Luke</div>
+  </template>
+  <template [ngSwitchWhen]="134163">
+      <div>This guy is Chris</div>
+  </template>
+  <template ngSwitchDefault>
+      <div>Don't know this Guy (lol)</div>
+  </template>
+</div>
+
+<hr />
+
+<button (click)="showValues($event)">Click me!</button>
+
+
+

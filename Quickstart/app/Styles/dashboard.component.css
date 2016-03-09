@@ -58,3 +58,7 @@ h4 {
       min-width: 60px;
     }
 }
+
+.isInvalid {
+    border: 1px solid red;
+}

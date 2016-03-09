@@ -8,6 +8,8 @@ import {HeroesComponent} from './components/heroes.component';
 import {DashboardComponent} from './components/dashboard.component';
 import {HeroDetailComponent} from './components/hero-detail.component';
 
+import {BaseRepo} from './Repos/BaseRepo';
+
 @Component({
     
     selector: 'my-app',
@@ -32,7 +34,9 @@ import {HeroDetailComponent} from './components/hero-detail.component';
     providers: [
         ROUTER_DIRECTIVES,
         HeroService,
-        DownloadService
+        DownloadService,
+        
+        BaseRepo
     ]
   
 })
