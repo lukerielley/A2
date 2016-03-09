@@ -34,7 +34,7 @@ export class BaseRepo<T> implements IBaseRepo<T> {
                     console.error('There was an error: ' + err);
                 },
                 () => {
-                    console.log('Random Quote Complete');
+                    console.log('GET Complete');
                 }
                 );
         })
@@ -60,7 +60,7 @@ export class BaseRepo<T> implements IBaseRepo<T> {
                     console.error('There was an error: ' + err);
                 },
                 () => {
-                    console.log('Random Quote Complete');
+                    console.log('POST Complete');
                 }
                 );
         })
@@ -85,7 +85,7 @@ export class BaseRepo<T> implements IBaseRepo<T> {
                     console.error('There was an error: ' + err);
                 },
                 () => {
-                    console.log('Random Quote Complete');
+                    console.log('PUT Complete');
                 }
                 );
         })
@@ -109,7 +109,7 @@ export class BaseRepo<T> implements IBaseRepo<T> {
                     console.error('There was an error: ' + err);
                 },
                 () => {
-                    console.log('Random Quote Complete');
+                    console.log('DELETE Complete');
                 }
                 );
         })
