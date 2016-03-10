@@ -6,3 +6,4 @@ Quickstart/node_modules/
 *.js
 Animate.bat
 Video.bat
+!endpoint.js
