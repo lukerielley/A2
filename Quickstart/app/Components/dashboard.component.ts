@@ -37,10 +37,7 @@ export class DashboardComponent {
             this.currentUser.firstname = "Luke";
             this.currentUser.lastname = "Rielley";
             
-            var lukesNumber = 134226;
-            var chrisNumber = 134163;
-            
-            this.specialNumber = lukesNumber;
+            this.planType = 1;
             
         }
 

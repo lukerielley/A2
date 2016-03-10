@@ -7,3 +7,4 @@ Quickstart/node_modules/
 Animate.bat
 Video.bat
 !endpoint.js
+*npm-debug*

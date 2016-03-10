@@ -32,15 +32,15 @@
 <hr />
 
 <h2>ngSWITCH</h2>
-<div [ngSwitch]="specialNumber">
-  <template [ngSwitchWhen]="134226">
-      <div>This guy is Luke</div>
+<div [ngSwitch]="planType">
+  <template [ngSwitchWhen]="1">
+      <div>Electricity Plan</div>
   </template>
-  <template [ngSwitchWhen]="134163">
-      <div>This guy is Chris</div>
+  <template [ngSwitchWhen]="2">
+      <div>Gas Plan</div>
   </template>
   <template ngSwitchDefault>
-      <div>Don't know this Guy (lol)</div>
+      <div>Unknown Plan Type</div>
   </template>
 </div>
 
