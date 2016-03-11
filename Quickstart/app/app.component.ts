@@ -10,6 +10,8 @@ import {HeroDetailComponent} from './components/hero-detail.component';
 
 import {BaseRepo} from './Repos/BaseRepo';
 
+import {HeroRepo} from './Repos/HeroRepo';
+
 @Component({
     
     selector: 'my-app',
@@ -36,7 +38,8 @@ import {BaseRepo} from './Repos/BaseRepo';
         HeroService,
         DownloadService,
         
-        BaseRepo
+        BaseRepo,
+        HeroRepo
     ]
   
 })

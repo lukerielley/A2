@@ -3,6 +3,7 @@ import {Http, HTTP_PROVIDERS} from 'angular2/http';
 import 'rxjs/Rx';
 
 import {BaseRepo} from '../Repos/BaseRepo';
+import {HeroRepo} from '../Repos/HeroRepo';
 
 @Injectable({
 
@@ -18,12 +19,16 @@ export class DownloadService {
     private _baseUrl: string;
     private _maxRetries: number;
     private _baseRepo: BaseRepo<IHero>;
+    
+    private _heroRepo: HeroRepo<IHero>;
 
     constructor(
         http: Http,
-        baseRepo: BaseRepo) {
+        baseRepo: BaseRepo,
+        heroRepo: HeroRepo) {
             
         this._baseRepo = baseRepo;
+        this._heroRepo = heroRepo;
         this._httpDownloader = http;
         
         // Could come out of a config URL or be injected?
@@ -34,8 +39,21 @@ export class DownloadService {
     
     public Get(url: string) : T {
         
-        //alert('Getting');
+        console.log('DOWNLOAD SERVICE GETTING');
         
+        if (this._heroRepo)
+        {
+            this._heroRepo.Get('heroes.json')
+                .then(data => {
+                    
+                    alert('I Have the data now! \n\n' + JSON.stringify(data));
+                    
+                });
+        }
+        
+        return Promise.resolve(null);
+        
+        /*
         var deferredResult = new Promise((resolve, reject) => {
             this._httpDownloader.get(this._baseUrl + url)
                 .retry(this._maxRetries)
@@ -56,6 +74,7 @@ export class DownloadService {
         })
         
         return deferredResult;
+        */
     }
 
     public Post(url: string, bodyObject) : T {

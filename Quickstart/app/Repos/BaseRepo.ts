@@ -27,6 +27,7 @@ export class BaseRepo<T> implements IBaseRepo<T> {
 
     
     public Get(url: string) : Promise<T> {
+        
         var deferredResult = new Promise((resolve, reject) => {
             this._activeRequests++;
             this._httpDownloader.get(this._baseUrl + url)
