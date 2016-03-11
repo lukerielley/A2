@@ -29,6 +29,8 @@ export class DashboardComponent {
     currentUser: User;
     
     specialNumber: number;
+    
+    dueDate: Date;
 
     constructor(
         private _router: Router,
@@ -43,6 +45,9 @@ export class DashboardComponent {
             this.currentUser.lastname = "Rielley";
             
             this.planType = 1;
+            
+            // a year from now
+            this.dueDate = new Date(2017, 3, 11, 2, 2, 7, 34)
             
         }
 
