@@ -4,7 +4,7 @@ import { IHero } from '../interfaces/ihero';
 import { HeroService } from '../services/hero.service';
 import {IUser,User} from '../interfaces/User';
 
-import {Router} from 'angular2/router';
+import {Router, ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({
     selector: 'my-dashboard',
@@ -12,7 +12,12 @@ import {Router} from 'angular2/router';
     templateUrl: './app/templates/dashboard.component.html',
     styleUrls: [
         'app/styles/dashboard.component.css'
-    ]
+    ],
+    
+    directives: [
+        ROUTER_DIRECTIVES // we need to bring this in so we can use routerLink in the markup for this component
+    ],
+
 })
 
 export class DashboardComponent {
