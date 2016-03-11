@@ -20,7 +20,7 @@ export class DownloadService {
     private _maxRetries: number;
     private _baseRepo: BaseRepo<IHero>;
     
-    private _heroRepo: HeroRepo<IHero>;
+    private _heroRepo: HeroRepo;
 
     constructor(
         http: Http,
