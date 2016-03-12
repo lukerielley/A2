@@ -5,6 +5,8 @@ import 'rxjs/Rx';
 import {BaseRepo} from '../Repos/BaseRepo';
 import {HeroRepo} from '../Repos/HeroRepo';
 
+import {IHero} from '../interfaces/ihero';
+
 @Injectable({
 
     providers: [

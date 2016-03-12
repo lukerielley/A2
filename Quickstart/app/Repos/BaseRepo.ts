@@ -10,7 +10,6 @@ export class BaseRepo<T> implements IBaseRepo<T> {
     private _httpDownloader: Http;
     private _baseUrl: string;
     private _maxRetries: number;
-    
     private _activeRequests: number;
 
     constructor(
@@ -22,7 +21,6 @@ export class BaseRepo<T> implements IBaseRepo<T> {
         this._maxRetries = 1;
         
         this._activeRequests = 0;
-        
     }
 
     
