@@ -1,6 +1,8 @@
 # A2
 Angular 2 Working Prototype
 
+Version 1.0
+
 Requirements:
 
 Node JS 
