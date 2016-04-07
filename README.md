@@ -1,7 +1,7 @@
 # A2
 Angular 2 Working Prototype
 
-Version 1.0
+Version 1.1
 
 Requirements:
 
