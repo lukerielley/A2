@@ -8,3 +8,5 @@ Animate.bat
 Video.bat
 !endpoint.js
 *npm-debug*
+RC1-Quickstart/node_modules/
+RC1-Quickstart/typings/
