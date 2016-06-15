@@ -10,3 +10,4 @@ Video.bat
 *npm-debug*
 RC1-Quickstart/node_modules/
 RC1-Quickstart/typings/
+!systemjs.config.js
