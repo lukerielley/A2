@@ -1,11 +1,12 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { RouteParams } from '@angular/router-deprecated';
-import { Hero }        from './hero';
-import { HeroService } from './hero.service';
+import { Hero }                from '../../model/hero';
+import { HeroService }         from '../../service/hero.service';
+
 @Component({
   selector: 'my-hero-detail',
-  templateUrl: 'app/hero-detail.component.html',
-  styleUrls: ['app/hero-detail.component.css']
+  templateUrl: 'app/feature/component/heroes-detail/hero-detail.component.html',
+  styleUrls: ['app/feature/component/heroes-detail/hero-detail.component.css']
 })
 export class HeroDetailComponent implements OnInit {
   @Input() hero: Hero;
